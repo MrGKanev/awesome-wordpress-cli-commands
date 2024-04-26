@@ -12,3 +12,75 @@ List:
 ```bash
 wp wc cot sync
 ```
+
+### Creating Dummy content
+```bash
+wp post generate --count=10
+```
+
+### Cleaning your website
+```bash
+wp site empty
+```
+
+### Checking the config file
+```bash
+wp config get
+```
+
+### Checking the database size
+```bash
+wp db size --tables
+```
+
+### Running core update
+```bash
+wp core update
+```
+
+### Plugins manipulation
+
+#### List
+```bash
+wp plugin list
+```
+#### Install
+```bash
+wp plugin install
+```
+
+#### Update
+```bash
+wp plugin update plugin-name
+```
+
+#### Disable
+```bash
+wp plugin deactivate plugin-name
+```
+
+#### Delete
+```bash
+wp plugin delete plugin-name
+```
+
+### Reseting User Password
+```bash
+wp user update user@example.com --user_pass=new-password
+```
+
+### Database Manipulations
+
+#### Optimization
+```bash
+wp db optimize
+```
+#### Repair
+```bash
+wp db repair
+```
+
+#### Backup
+```bash
+wp db export name.sql
+```
