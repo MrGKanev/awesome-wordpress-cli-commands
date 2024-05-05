@@ -13,6 +13,11 @@ List:
 wp wc cot sync
 ```
 
+### Cleaning Woocommerce trash products
+```bash
+wp post delete $(wp post list --post_type=product --post_status=trash --format=ids) --force
+```
+
 ### Creating Dummy content
 ```bash
 wp post generate --count=10
