@@ -18,9 +18,9 @@ wp wc cot sync
 wp post delete $(wp post list --post_type=product --post_status=trash --format=ids) --force
 ```
 
-### Cleaning unattached jpegs
+### Cleaning unattached jpegs from the WordPress library
 ```bash
-for id in $(wp db query "SELECT ID FROM wp_posts where post_type='attachment' AND post_parent=0 AND post_mime_type='image/jpeg" --silent --skip-column-names)
+for id in $(wp db query "SELECT ID FROM wp90_posts where post_type='attachment' AND post_parent=0 AND post_mime_type='image/jpeg'" --silent --skip-column-names)
 do
     wp post delete --force $id
 done
