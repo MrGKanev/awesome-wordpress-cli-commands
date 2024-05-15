@@ -7,6 +7,17 @@ How to install [WordPress CLI](https://wp-cli.org/).
 List:
 
 - [Syncing High-Performance Order Storage](#syncing-high-performance-order-storages)
+- [Cleaning Woocommerce trash products](#cleaning-woocommerce-trash-products)
+- [Cleaning unattached jpegs from the WordPress library](#cleaning-unattached-jpegs-from-the-wordpress-library)
+- [Creating Dummy content](#creating-dummy-content)
+- [Cleaning your website](#cleaning-your-website)
+- [Checking the config file](#checking-the-config-file)
+- [Checking the database size](#checking-the-database-size)
+- [Running core update](#running-core-update)
+- [Plugins manipulation](#plugins-manipulation)
+- [Reseting User Password](#reseting-user-password)
+- [Database Manipulations](#database-manipulations)
+
 
 ### Syncing High-Performance Order Storage
 ```bash
