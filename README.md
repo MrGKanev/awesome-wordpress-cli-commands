@@ -2,7 +2,7 @@
 
 I often reference this list of useful WordPress CLI commands to enhance or clean up my sites. Please be careful and make backups.
 
-How to install [WordPress CLI](https://wp-cli.org/).
+How to install [WordPress CLI](https://wp-cli.org/#installing). Here you can checkout the [commands](https://developer.wordpress.org/cli/commands/).
 
 List:
 
@@ -17,7 +17,6 @@ List:
 - [Plugins manipulation](#plugins-manipulation)
 - [Reseting User Password](#reseting-user-password)
 - [Database Manipulations](#database-manipulations)
-
 
 ### Syncing High-Performance Order Storage
 ```bash
