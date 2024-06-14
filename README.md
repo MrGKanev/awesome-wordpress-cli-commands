@@ -10,6 +10,7 @@ List:
 - [Cleaning Woocommerce trash products](#cleaning-woocommerce-trash-products)
 - [Cleaning unattached jpegs from the WordPress library](#cleaning-unattached-jpegs-from-the-wordpress-library)
 - [Creating Dummy content](#creating-dummy-content)
+- [Truly stopping comments](#truly-disabling/stopping-comments)
 - [Cleaning your website](#cleaning-your-website)
 - [Checking the config file](#checking-the-config-file)
 - [Checking the database size](#checking-the-database-size)
@@ -79,6 +80,14 @@ Using scripts/batch-delete-unattached-jpegs.sh it is nearly 1.5x faster than the
 ### Creating Dummy content
 ```bash
 wp post generate --count=10
+```
+
+### Truly disabling/stopping comments
+```bash
+wp option update default_comment_status closed
+wp option update default_ping_status closed
+wp db query "UPDATE wp_posts SET comment_status='closed' WHERE post_status='publish';"
+wp db query "UPDATE wp_posts SET ping_status='closed' WHERE post_status='publish';"
 ```
 
 ### Cleaning your website
