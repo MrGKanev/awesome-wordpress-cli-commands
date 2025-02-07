@@ -9,6 +9,7 @@ List:
 - [Syncing High-Performance Order Storage](#syncing-high-performance-order-storages)
 - [Recovering WordPress after a fatal error from plugin update](#recovering-wordpress-after-a-fatal-error-from-plugin-update)
 - [Cleaning Woocommerce trash products](#cleaning-woocommerce-trash-products)
+- [WordPress Hacking cleanup](#wordpress-hacking-cleanup)
 - [Cleaning unattached jpegs from the WordPress library](#cleaning-unattached-jpegs-from-the-wordpress-library)
 - [Creating Dummy content](#creating-dummy-content)
 - [Deleting spam comments](#deleting-spam-comments)
@@ -39,6 +40,16 @@ wp plugin deactivate plugin-says-no --skip-plugins
 wp post delete $(wp post list --post_type=product --post_status=trash --format=ids) --force
 ```
 
+### WordPress hacking cleanup
+
+The following commands will remove any files that may have been created by a hacker. It will also remove any PHP files that are not part of the WordPress core. This is a very dangerous command and should be used with caution. It isn't a 100% guarantee that it will remove all the files that a hacker may have created, but it will remove most of them.
+
+```bash
+1. Download the script from the repository - /scripts/wp-hacking-cleanup.sh
+2. chmod +x scripts/wp-hacking-cleanup.sh
+3. ./scripts/wp-hacking-cleanup.sh
+```
+
 ### Cleaning unattached jpegs from the WordPress library
 
 ```bash
@@ -51,42 +62,10 @@ done
 ### Cleaning unattached jpegs from the WordPress library in batches. You can change the batch size by changing the value of the `batch_size` variable. 
 
 ```bash
-# !/bin/bash
-
-# Fetch all IDs in one command and store them in an array
-
-ids=($(wp db query "SELECT ID FROM wp90_posts WHERE post_type='attachment' AND post_parent=0 AND post_mime_type='image/jpeg'" --silent --skip-column-names))
-
-# Function to delete posts in batches
-
-delete_in_batches() {
-    local batch=("$@")
-    if ! wp post delete --force "${batch[@]}"; then
-        echo "Error: Failed to delete one or more posts in this batch."
-        exit 1
-    fi
-}
-
-# Batch size
-
-batch_size=500
-
-# Total number of IDs
-
-total_ids=${#ids[@]}
-
-# Process IDs in batches of 500
-
-for ((i=0; i<total_ids; i+=batch_size)); do
-    batch=("${ids[@]:i:batch_size}")
-    echo "Deleting batch starting with ID ${batch[0]}"
-    delete_in_batches "T${batch[@]}"
-done
-
-echo "Deletion process completed."
+1. Download the script from the repository - /scripts/batch-delete-unattached-jpegs.sh
+2. chmod +x scripts/batch-delete-unattached-jpegs.sh
+3. ./scripts/batch-delete-unattached-jpegs.sh
 ```
-
-Using scripts/batch-delete-unattached-jpegs.sh it is nearly 1.5x faster than the previous command. Don't forget to make the script executable by running `chmod +x scripts/batch-delete-unattached-jpegs.sh`.
 
 ### Creating Dummy content
 
